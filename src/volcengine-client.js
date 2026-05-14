@@ -29,23 +29,26 @@ class VolcengineClient {
     return new Promise((resolve, reject) => {
       this.connectId = randomUUID();
 
+      // App-Key 在火山部分文档中是可选的；没配就不发，避免误用空字符串导致 401
+      const headers = {
+        'X-Api-Resource-Id': VOLC_RESOURCE_ID,
+        'X-Api-App-ID': this.appId,
+        'X-Api-Access-Key': this.accessToken,
+      };
+      if (VOLC_APP_KEY) headers['X-Api-App-Key'] = VOLC_APP_KEY;
+
       console.log('[volc-client] stage=connecting');
       console.log('[volc-client] url=', VOLC_WS_URL);
       console.log('[volc-client] headers:', {
         'X-Api-Resource-Id': VOLC_RESOURCE_ID,
-        'X-Api-App-Key': VOLC_APP_KEY.substring(0, 8) + '...',
+        'X-Api-App-Key': VOLC_APP_KEY ? VOLC_APP_KEY.substring(0, 8) + '...' : '(omitted)',
         'X-Api-App-ID': this.appId,
         'X-Api-Access-Key': this.accessToken.substring(0, 8) + '...',
       });
 
       const ws = new WebSocket(VOLC_WS_URL, {
         rejectUnauthorized: true,
-        headers: {
-          'X-Api-Resource-Id': VOLC_RESOURCE_ID,
-          'X-Api-App-Key': VOLC_APP_KEY,
-          'X-Api-App-ID': this.appId,
-          'X-Api-Access-Key': this.accessToken,
-        },
+        headers,
       });
 
       ws.on('open', async () => {
