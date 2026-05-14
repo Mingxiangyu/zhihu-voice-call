@@ -1,0 +1,19 @@
+{
+  "name": "zhihu",
+  "version": "1.0.0",
+  "description": "基于火山引擎 RealtimeAPI 的知乎用户语音通话 Demo，支持 OAuth 登录与 AI 主动开场白",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "uuid": "^14.0.0",
+    "ws": "^8.20.0"
+  }
+}

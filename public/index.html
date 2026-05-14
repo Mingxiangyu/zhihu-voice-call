@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>刘看山 · 语音通话</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- 右上角登录区 -->
+  <div class="auth-bar" id="authBar">
+    <div class="auth-loading">…</div>
+  </div>
+
+  <div class="container">
+    <div class="avatar-wrapper">
+      <img src="img/liukanshan.png" alt="刘看山" class="avatar" id="avatar">
+      <div class="ring-animation" id="ring"></div>
+    </div>
+
+    <p class="status" id="status">加载中…</p>
+
+    <button class="call-btn" id="callBtn" aria-label="通话" disabled>
+      <svg class="call-icon" id="callIcon" viewBox="0 0 24 24" width="32" height="32">
+        <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.36 11.36 0 003.58.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.36 11.36 0 00.57 3.58 1 1 0 01-.25 1.01l-2.2 2.2z"/>
+      </svg>
+    </button>
+
+    <p class="timer" id="timer"></p>
+
+    <div class="transcript" id="transcript"></div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
