@@ -1,5 +1,5 @@
 const WebSocket = require('ws');
-const { v4: uuidv4 } = require('uuid');
+const { randomUUID } = require('crypto');
 const {
   buildTextFrame, buildAudioFrame, parseFrame,
   EventId, MessageType,
@@ -27,7 +27,7 @@ class VolcengineClient {
 
   connect() {
     return new Promise((resolve, reject) => {
-      this.connectId = uuidv4();
+      this.connectId = randomUUID();
 
       console.log('[volc-client] stage=connecting');
       console.log('[volc-client] url=', VOLC_WS_URL);
@@ -96,7 +96,7 @@ class VolcengineClient {
     if (!this.connected || !this.ws) throw new Error('Not connected');
 
     return new Promise((resolve, reject) => {
-      this.sessionId = uuidv4();
+      this.sessionId = randomUUID();
       this.audioSequence = 3;
 
       let sessionTimeout = null;
